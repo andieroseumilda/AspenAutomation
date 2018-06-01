@@ -1,11 +1,13 @@
 package stepDefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -21,27 +23,53 @@ public class calendarStepDef {
         driver = new ChromeDriver();
     }
 
-    @Given("^i open the IBE page$")
+    @When("^i open the IBE page$")
     public void iOpenTheIBEPage() {
         // open the IBE page
-        driver.get("http://www.google.com");
-        System.out.println("Test only");
+        driver.get("http://aspen.reservations.com/property/17371/#/stay-dates");
     }
 
-    @When("^i should see the Google label$")
-    public void iShouldSeeTheGoogleLabel() {
-        System.out.println("Google copy");
+    @Then("^i should see the header copy \"([^\"]*)\"$")
+    public void iShouldSeeTheHeaderCopy(String headerCopy) {
+      // assert: When would you like to stay
+        String calendarHearCopy = driver.findElement(new By.ByCssSelector(".stay-dates-page>h5")).getText();
+        Assert.assertEquals("Please see the message below", headerCopy, calendarHearCopy);
     }
 
-    @Then("^i verify that the hotel property is on the page$")
-    public void iVerifyThatTheHotelPropertyIsOnThePage() throws InterruptedException {
-        System.out.println("Test only");
-        Thread.sleep(3000);
+    @And("^i should see the hotel banner copy \"([^\"]*)\"$")
+    public void iShouldSeeTheHotelBannerCopy(String hotelBannerCopy){
+       String hotelPropertyName = driver.findElement(new By.ByCssSelector(".fixed-top>div>div>.mb-0")).getText();
+        Assert.assertEquals("Please see the message below", hotelBannerCopy, hotelPropertyName);
     }
 
+    @And("^i should see the hotel country copy \"([^\"]*)\"$")
+    public void iShouldSeeTheHotelCountryCopy(String hotelBannerCountry) {
+        String hotelCountry = driver.findElement(new By.ByCssSelector(".banner__hotel-country")).getText();
+        Assert.assertEquals("Please see the message below", hotelBannerCountry, hotelCountry);
+    }
+
+    @And("^i should see the CHECK-IN, TO and CHECK-OUT copy \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\"$")
+    public void iShouldSeeTheCHECKINTOAndCHECKOUTCopyAnd(String expectedCheckIn, String expectedCheckout, String expectedTo) throws Throwable {
+        String actualCheckin = driver.findElement(new By.ByCssSelector(".stay-dates-page__dates>.dates-holder>.dates-holder__checkin>div>.dates-holder__dates-label")).getText();
+        String actualCheckout = driver.findElement(new By.ByCssSelector(".stay-dates-page__dates>.dates-holder>.dates-holder__checkout>div>.dates-holder__dates-label")).getText();
+        String actualTo = driver.findElement(new By.ByCssSelector(".stay-dates-page__dates>div>div+div>.dates-holder__divider-label")).getText();
+        Assert.assertEquals("Please see the message below", expectedCheckIn, actualCheckin);
+        Assert.assertEquals("Please see the message below",expectedCheckout, actualCheckout);
+        Assert.assertEquals("Please see the message below", expectedTo, actualTo);
+
+    }
+
+    @And("^i should see the see rooms button copy \"([^\"]*)\"$")
+    public void iShouldSeeTheSeeRoomsButtonCopy(String expectedCopy){
+        String actualCopy = driver.findElement(new By.ByCssSelector(".stay-dates-page__btn-see-rooms")).getText();
+        Assert.assertEquals("Please see the message below", expectedCopy, actualCopy);
+    }
     @After
-    public void closeTheWindow(){
+    public void closeTheWindow() throws InterruptedException {
+        Thread.sleep(3000);
         driver.quit();
     }
+
+
 
 }
