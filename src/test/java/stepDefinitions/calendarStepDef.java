@@ -24,15 +24,16 @@ public class calendarStepDef {
     }
 
     @When("^i open the IBE page$")
-    public void iOpenTheIBEPage() {
+    public void iOpenTheIBEPage() throws InterruptedException {
         // open the IBE page
         driver.get("http://aspen.reservations.com/property/17371/#/stay-dates");
+        Thread.sleep(3000);
     }
 
     @Then("^i should see the header copy \"([^\"]*)\"$")
     public void iShouldSeeTheHeaderCopy(String headerCopy) {
       // assert: When would you like to stay
-        String calendarHearCopy = driver.findElement(new By.ByCssSelector(".stay-dates-page>h5")).getText();
+             String calendarHearCopy = driver.findElement(new By.ByCssSelector(".stay-dates-page .stay-dates-page__question")).getText();
         Assert.assertEquals("Please see the message below", headerCopy, calendarHearCopy);
     }
 
