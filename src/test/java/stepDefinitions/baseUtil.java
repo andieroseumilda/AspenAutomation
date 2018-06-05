@@ -6,4 +6,6 @@ public class baseUtil {
 
     // passing an instance
     public WebDriver driver;
+
+    public String run = "run";
 }
