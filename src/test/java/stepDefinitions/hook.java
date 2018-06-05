@@ -3,6 +3,7 @@ package stepDefinitions;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.chrome.ChromeDriver;
+import support.baseUtil;
 
 //extend class to get the variable/ container
 public class hook extends baseUtil {

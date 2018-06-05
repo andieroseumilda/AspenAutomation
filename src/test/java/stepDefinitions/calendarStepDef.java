@@ -5,7 +5,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import locatorsAndMethods.calendarLocator;
 import org.junit.Assert;
-import org.openqa.selenium.By;
+import support.stayDatesFormat;
+import support.baseUtil;
 
 
 //extend to next class to get the variable / container
@@ -14,19 +15,22 @@ public class calendarStepDef extends baseUtil {
     // data type(class) and variable name
     public baseUtil base;
     public calendarLocator calendar;
+    public stayDatesFormat dateFormat;
 
 
     // running an instance getting and assigning variable
     public calendarStepDef(baseUtil base) {
         this.base = base;
         calendar = new calendarLocator(base);
+        dateFormat = new stayDatesFormat(base);
     }
 
     @When("^i open the IBE page$")
     public void iOpenTheIBEPage() throws InterruptedException {
         // open the IBE page
         base.driver.get("http://aspen.reservations.com/property/17371/#/stay-dates");
-        Thread.sleep(3000);
+        dateFormat.selectArrivalDate();
+
     }
 
     @Then("^i should see the header copy \"([^\"]*)\"$")
