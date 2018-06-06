@@ -1,4 +1,4 @@
-package locatorsAndMethods;
+package support.locatorsAndMethods;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -47,6 +47,10 @@ public class calendarLocator extends baseUtil{
     @FindBy(css = ".stay-dates-page__btn-see-rooms")
     private WebElement seeRooms;
 
+    //----------------stay dates section
+    @FindBy(css = ".stay-dates-page__dates .dates-holder__checkin .dates-holder__day")
+    private WebElement numberOfCheckin;
+
     //Element Methods
     public String getCalendarHeaderCopy(){
         return wait.until(visibilityOf(calendarHearCopy)).getText();
@@ -74,5 +78,9 @@ public class calendarLocator extends baseUtil{
 
     public WebElement getSeeRooms() {
         return wait.until(visibilityOf(seeRooms));
+    }
+
+    public String getNumberOfCheckinDay(){
+        return wait.until(visibilityOf(numberOfCheckin)).getText();
     }
 }

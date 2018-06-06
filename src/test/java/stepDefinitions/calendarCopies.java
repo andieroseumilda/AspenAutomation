@@ -1,16 +1,17 @@
 package stepDefinitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import locatorsAndMethods.calendarLocator;
+import support.locatorsAndMethods.calendarLocator;
 import org.junit.Assert;
 import support.stayDatesFormat;
 import support.baseUtil;
 
 
 //extend to next class to get the variable / container
-public class calendarStepDef extends baseUtil {
+public class calendarCopies extends baseUtil {
 
     // data type(class) and variable name
     public baseUtil base;
@@ -19,10 +20,11 @@ public class calendarStepDef extends baseUtil {
 
 
     // running an instance getting and assigning variable
-    public calendarStepDef(baseUtil base) {
+    public calendarCopies(baseUtil base) {
         this.base = base;
         calendar = new calendarLocator(base);
         dateFormat = new stayDatesFormat(base);
+
     }
 
     @When("^i open the IBE page$")
@@ -69,6 +71,12 @@ public class calendarStepDef extends baseUtil {
     }
 
 
-
-
+    @And("^i should see the date today and tomorrow on the stay dates sections$")
+    public void iShouldSeeTheDateTodayAndTomorrowOnTheStayDatesSections() {
+        //get the date today
+        String getActualCheckinDay = calendar.getNumberOfCheckinDay();
+        String expectedCheckinDay = dateFormat.selectArrivalDate();
+        Assert.assertEquals("Please see the message below",expectedCheckinDay,getActualCheckinDay );
+        //and date tomorrow
+    }
 }

@@ -8,3 +8,4 @@ Feature: To get the copies of IBE
     And i should see the hotel country copy "Philippines"
     And i should see the CHECK-IN, TO and CHECK-OUT copy "Check-In", "Check-Out" and "to"
     And i should see the see rooms button copy "SEE ROOMS"
+    And i should see the date today and tomorrow on the stay dates sections
