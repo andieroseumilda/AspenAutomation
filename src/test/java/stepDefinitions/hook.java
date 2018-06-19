@@ -5,6 +5,8 @@ import cucumber.api.java.Before;
 import org.openqa.selenium.chrome.ChromeDriver;
 import support.baseUtil;
 
+import java.awt.*;
+
 //extend class to get the variable/ container
 public class hook extends baseUtil {
 
@@ -15,14 +17,14 @@ public class hook extends baseUtil {
     public hook(baseUtil base) {
         System.setProperty("webdriver.chrome.driver","..\\automation\\seleniumWebBrowser\\chromedriver.exe");
         this.base = base;
-
     }
 
-
     @Before
-    public void initialize(){
+    public void initialize() throws InterruptedException, AWTException {
         // getting the variable or temp container
         base.driver = new ChromeDriver();
+        base.driver.manage().window().maximize();
+        Thread.sleep(2000);
     }
     @After
     public void closeTheWindow() throws InterruptedException {

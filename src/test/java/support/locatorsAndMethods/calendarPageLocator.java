@@ -12,13 +12,13 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 /**
  * Created by andie on 29/05/2018.
  */
-public class calendarLocator extends baseUtil{
+public class calendarPageLocator extends baseUtil{
 
     private baseUtil base;
     private WebDriverWait wait;
 
 
-    public calendarLocator(baseUtil base) {
+    public calendarPageLocator(baseUtil base) {
         this.base = base;
         PageFactory.initElements(base.driver, this);
         this.wait = new WebDriverWait(base.driver, 1000);
@@ -50,6 +50,30 @@ public class calendarLocator extends baseUtil{
     //----------------stay dates section
     @FindBy(css = ".stay-dates-page__dates .dates-holder__checkin .dates-holder__day")
     private WebElement numberOfCheckin;
+
+    @FindBy( css = ".stay-dates-page__dates .dates-holder__checkout .dates-holder__day")
+    private WebElement numberOfCheckout;
+
+    //stay dates button
+    @FindBy(css = ".stay-dates-page__dates > [data-target=\"#calendarModal\"]")
+    private WebElement stayDatesButton;
+
+    //Calendar Modal
+    @FindBy(css = ".modal-header .dates-holder__checkin>div>.dates-holder__dates-label")
+    private WebElement checkinLabelModal;
+
+    @FindBy(css = ".modal-header .dates-holder__divider-label")
+    private WebElement toLabelModal;
+
+    @FindBy(css = ".modal-header .dates-holder__checkout .dates-holder__dates-label")
+    private WebElement checkoutLabelModal;
+
+    @FindBy(css = ".modal-header [data-cy=\"check-in\"]")
+    private WebElement checkinHeaderModal;
+
+    @FindBy(css = ".modal-header [data-cy=\"check-out\"]")
+    private WebElement checkoutHeaderModal;
+
 
     //Element Methods
     public String getCalendarHeaderCopy(){
@@ -83,4 +107,34 @@ public class calendarLocator extends baseUtil{
     public String getNumberOfCheckinDay(){
         return wait.until(visibilityOf(numberOfCheckin)).getText();
     }
+
+    public String getNumberofCheckoutDay(){
+        return wait.until(visibilityOf(numberOfCheckout)).getText();
+    }
+
+    public void getStayDatesButton(){
+        wait.until(visibilityOf(stayDatesButton)).click();
+    }
+
+    // Calendar Modal
+    public String getCheckinLabelModal(){
+        return wait.until((visibilityOf(checkinLabelModal))).getText();
+    }
+
+    public String getToLabelModal(){
+        return wait.until(visibilityOf(toLabelModal)).getText();
+    }
+
+    public String getCheckoutLabelModal(){
+        return wait.until(visibilityOf(checkoutLabelModal)).getText();
+    }
+
+    public String getHeaderCheckinModal(){
+        return wait.until(visibilityOf(checkinHeaderModal)).getText();
+    }
+
+    public String getHEaderCheckoutModal(){
+        return wait.until(visibilityOf(checkoutHeaderModal)).getText();
+    }
+
 }
