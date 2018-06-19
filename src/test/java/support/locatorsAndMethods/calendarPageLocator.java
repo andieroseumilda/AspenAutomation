@@ -3,6 +3,8 @@ package support.locatorsAndMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import support.baseUtil;
 
@@ -74,7 +76,7 @@ public class calendarPageLocator extends baseUtil{
     @FindBy(css = ".modal-header [data-cy=\"check-out\"]")
     private WebElement checkoutHeaderModal;
 
-    @FindBy(css = ".modal-body [data-cy=\"rate-filter\"]>[type=\"checkbox\"]")
+    @FindBy(css = "[data-cy=\"rate-filter\"]")
     private WebElement btnShowRates;
 
 
@@ -141,6 +143,6 @@ public class calendarPageLocator extends baseUtil{
     }
 
     public void clickButtonShowRates(){
-        wait.until(visibilityOf(btnShowRates)).click();
+        wait.until(ExpectedConditions.elementToBeClickable((btnShowRates))).click();
     }
 }

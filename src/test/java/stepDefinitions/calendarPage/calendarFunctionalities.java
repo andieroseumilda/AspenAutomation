@@ -21,9 +21,9 @@ public class calendarFunctionalities extends baseUtil {
     }
 
     @When("^i click the show rates$")
-    public void iClickTheShowRates() {
+    public void iClickTheShowRates() throws InterruptedException {
         calendar.clickButtonShowRates();
-
+        Thread.sleep(2000);
     }
 
     @Then("^i should see the lowest, median and highest rates$")
