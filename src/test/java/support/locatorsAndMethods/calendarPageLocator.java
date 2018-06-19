@@ -74,6 +74,9 @@ public class calendarPageLocator extends baseUtil{
     @FindBy(css = ".modal-header [data-cy=\"check-out\"]")
     private WebElement checkoutHeaderModal;
 
+    @FindBy(css = ".modal-body [data-cy=\"rate-filter\"]>[type=\"checkbox\"]")
+    private WebElement btnShowRates;
+
 
     //Element Methods
     public String getCalendarHeaderCopy(){
@@ -137,4 +140,7 @@ public class calendarPageLocator extends baseUtil{
         return wait.until(visibilityOf(checkoutHeaderModal)).getText();
     }
 
+    public void clickButtonShowRates(){
+        wait.until(visibilityOf(btnShowRates)).click();
+    }
 }

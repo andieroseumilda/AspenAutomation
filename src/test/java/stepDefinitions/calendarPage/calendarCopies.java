@@ -96,4 +96,17 @@ public class calendarCopies extends baseUtil {
         Assert.assertEquals("Please see the message below", expectedCheckoutLabelModal, getActualCheckoutLabelModal);
 
     }
+
+    @Then("^i should see the date today and tomorrow on Calendar Modal$")
+    public void iShouldSeeTheDateTodayAndTomorrowOnCalendarModal() {
+        //checkin today
+        String actualCheckInNumberModal = calendar.getHeaderCheckinModal();
+        String expectedChecinNumberModal = dateFormat.selectStayDate(0);
+        Assert.assertEquals("Please see the message below", expectedChecinNumberModal, actualCheckInNumberModal);
+        //checkout tomorrow
+        String actualCheckoutNumberModal = calendar.getHEaderCheckoutModal();
+        String expectedCheckoutNumberModal = dateFormat.selectStayDate(1);
+        Assert.assertEquals("Please see the error message", expectedCheckoutNumberModal, actualCheckoutNumberModal);
+    }
+
 }
