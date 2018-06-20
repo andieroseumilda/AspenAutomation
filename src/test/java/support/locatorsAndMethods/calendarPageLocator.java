@@ -3,7 +3,6 @@ package support.locatorsAndMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import support.baseUtil;
@@ -79,6 +78,16 @@ public class calendarPageLocator extends baseUtil{
     @FindBy(css = "[data-cy=\"rate-filter\"]")
     private WebElement btnShowRates;
 
+    //3 types of Show rates - Calendar Modal
+    @FindBy(css = "[data-cy=\"rate-low\"]")
+    private WebElement lowRatesLabel;
+
+    @FindBy(css = "[data-cy=\"rate-mid\"]")
+    private WebElement medianRatesLabel;
+
+    @FindBy(css = "[data-cy=\"rate-high\"]")
+    private WebElement highRatesLabel;
+
 
     //Element Methods
     public String getCalendarHeaderCopy(){
@@ -144,5 +153,18 @@ public class calendarPageLocator extends baseUtil{
 
     public void clickButtonShowRates(){
         wait.until(ExpectedConditions.elementToBeClickable((btnShowRates))).click();
+    }
+
+    public Boolean getLowRates(){
+        return wait.until((ExpectedConditions.visibilityOf(lowRatesLabel))).isDisplayed();
+
+    }
+
+    public void getMedianRates(){
+        wait.until(ExpectedConditions.visibilityOf(medianRatesLabel)).isDisplayed();
+    }
+
+    public void getHighRates(){
+        wait.until(ExpectedConditions.visibilityOf(highRatesLabel)).isDisplayed();
     }
 }
