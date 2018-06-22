@@ -18,7 +18,7 @@ import java.io.File;
 
 )
 
-public class testRunner {
+public class  testRunner {
     @AfterClass
     public static void writeExtentReport() {
         Reporter.loadXMLConfig(new File("Config/reports.xml"));

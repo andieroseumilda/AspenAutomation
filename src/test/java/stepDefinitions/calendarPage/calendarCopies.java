@@ -29,7 +29,8 @@ public class calendarCopies extends baseUtil {
     @When("^i open the IBE page$")
     public void iOpenTheIBEPage() throws InterruptedException {
         // open the IBE page
-        base.driver.get("http://aspen.reservations.com/hotel/17371/#/stay-dates");
+//        base.driver.get("http://aspen.reservations.com/hotel/17371/#/stay-dates");
+        base.driver.get("http://aspen-reservations.directwithhotels.com/property/123/#/stay-dates");
      }
 
     @Then("^i should see the header copy \"([^\"]*)\"$")
