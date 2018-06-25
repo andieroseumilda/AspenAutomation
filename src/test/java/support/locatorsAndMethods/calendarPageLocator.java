@@ -88,6 +88,8 @@ public class calendarPageLocator extends baseUtil{
     @FindBy(css = "[data-cy=\"rate-high\"]")
     private WebElement highRatesLabel;
 
+    @FindBy(css = "[data-cy=\"calendar-month\"]")
+    private WebElement noOfMonths;
 
     //Element Methods
     public String getCalendarHeaderCopy(){
@@ -155,16 +157,20 @@ public class calendarPageLocator extends baseUtil{
         wait.until(ExpectedConditions.elementToBeClickable((btnShowRates))).click();
     }
 
-    public Boolean getLowRates(){
+    public boolean getLowRates(){
         return wait.until((ExpectedConditions.visibilityOf(lowRatesLabel))).isDisplayed();
-
     }
 
-    public void getMedianRates(){
-        wait.until(ExpectedConditions.visibilityOf(medianRatesLabel)).isDisplayed();
+    public boolean getMedianRates(){
+        return wait.until(ExpectedConditions.visibilityOf(medianRatesLabel)).isDisplayed();
     }
 
-    public void getHighRates(){
-        wait.until(ExpectedConditions.visibilityOf(highRatesLabel)).isDisplayed();
+    public boolean getHighRates(){
+        return wait.until(ExpectedConditions.visibilityOf(highRatesLabel)).isDisplayed();
+    }
+
+    public String[] getNoOfMonths(){
+        return new String[]{wait.until(ExpectedConditions.visibilityOf(noOfMonths)).getText()};
+
     }
 }

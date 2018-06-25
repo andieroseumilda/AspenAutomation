@@ -3,9 +3,10 @@ package stepDefinitions.calendarPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import support.controller.calendarPage;
 import support.locatorsAndMethods.calendarPageLocator;
 import org.junit.Assert;
-import support.stayDatesFormat;
+import support.controller.stayDatesFormat;
 import support.baseUtil;
 
 
@@ -13,9 +14,10 @@ import support.baseUtil;
 public class calendarCopies extends baseUtil {
 
     // data type(class) and variable name
-    public baseUtil base;
-    public calendarPageLocator calendar;
-    public stayDatesFormat dateFormat;
+    private baseUtil base;
+    private calendarPageLocator calendar;
+    private stayDatesFormat dateFormat;
+    private calendarPage calendarController;
 
 
     // running an instance getting and assigning variable
@@ -23,14 +25,15 @@ public class calendarCopies extends baseUtil {
         this.base = base;
         calendar = new calendarPageLocator(base);
         dateFormat = new stayDatesFormat(base);
+        calendarController = new calendarPage(base);
 
     }
 
     @When("^i open the IBE page$")
     public void iOpenTheIBEPage() throws InterruptedException {
         // open the IBE page
-//        base.driver.get("http://aspen.reservations.com/hotel/17371/#/stay-dates");
-        base.driver.get("http://aspen-reservations.directwithhotels.com/property/123/#/stay-dates");
+        base.driver.get("http://aspen.reservations.com/hotel/17371/#/stay-dates");
+//        base.driver.get("http://aspen-reservations.directwithhotels.com/hotel/17371/#/stay-dates");
      }
 
     @Then("^i should see the header copy \"([^\"]*)\"$")
@@ -110,4 +113,13 @@ public class calendarCopies extends baseUtil {
         Assert.assertEquals("Please see the error message", expectedCheckoutNumberModal, actualCheckoutNumberModal);
     }
 
+    @And("^i should see the number of months is up to (\\d+)$")
+    public void iShouldSeeTheNumberOfMonthsIsUpTo(int number_of_months)  {
+        String[] displayNoOfMonths = calendar.getNoOfMonths();
+//        System.out.println(displayNoOfMonths.length);
+        System.out.println(displayNoOfMonths);
+        for(String sample: displayNoOfMonths){
+            System.out.println(sample);
+        }
+    }
 }

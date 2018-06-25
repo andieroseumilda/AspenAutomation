@@ -23,5 +23,7 @@ Feature: To get the copies of IBE
       And i click the stay dates section
       When i click the show rates
       Then i should see the lowest, median and highest rates
+      And i should see the number of months is up to 20
+
 
 

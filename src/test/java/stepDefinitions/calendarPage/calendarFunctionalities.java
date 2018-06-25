@@ -34,5 +34,7 @@ public class calendarFunctionalities extends baseUtil {
         System.out.println("test");
         Boolean lowRatesMenu = calendar.getLowRates();
         Assert.assertTrue("Please see error message", lowRatesMenu);
+//        Boolean medianRatesMenu = calendar.getMedianRates();
+//        Assert.assertTrue(medianRatesMenu);
     }
 }
