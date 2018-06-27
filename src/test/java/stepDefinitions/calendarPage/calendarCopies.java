@@ -114,12 +114,8 @@ public class calendarCopies extends baseUtil {
     }
 
     @And("^i should see the number of months is up to (\\d+)$")
-    public void iShouldSeeTheNumberOfMonthsIsUpTo(int number_of_months)  {
-        String[] displayNoOfMonths = calendar.getNoOfMonths();
-//        System.out.println(displayNoOfMonths.length);
-        System.out.println(displayNoOfMonths);
-        for(String sample: displayNoOfMonths){
-            System.out.println(sample);
-        }
+    public void iShouldSeeTheNumberOfMonthsIsUpTo(int expectedNoOfMonths)  {
+        int actualNoOfMonths = calendar.getNoOfMonth().size();
+        Assert.assertEquals("Please error message below",expectedNoOfMonths,actualNoOfMonths );
     }
 }

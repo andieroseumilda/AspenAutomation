@@ -13,9 +13,9 @@ public class calendarPage extends baseUtil {
         calendarLocator = new calendarPageLocator(base);
     }
 
-    public String[] numberOfMonths(){
-        String[] getNoOfMonths= calendarLocator.getNoOfMonths();
-        return getNoOfMonths;
-    }
+//    public String[] numberOfMonths(){
+//        String[] getNoOfMonths= calendarLocator.getNoOfMonths();
+//        return getNoOfMonths;
+//    }
 
 }

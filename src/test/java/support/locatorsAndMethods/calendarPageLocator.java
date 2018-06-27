@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import support.baseUtil;
 
+import java.util.List;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 
@@ -89,7 +91,7 @@ public class calendarPageLocator extends baseUtil{
     private WebElement highRatesLabel;
 
     @FindBy(css = "[data-cy=\"calendar-month\"]")
-    private WebElement noOfMonths;
+    private List<WebElement> noOfMonths;
 
     //Element Methods
     public String getCalendarHeaderCopy(){
@@ -169,8 +171,13 @@ public class calendarPageLocator extends baseUtil{
         return wait.until(ExpectedConditions.visibilityOf(highRatesLabel)).isDisplayed();
     }
 
-    public String[] getNoOfMonths(){
-        return new String[]{wait.until(ExpectedConditions.visibilityOf(noOfMonths)).getText()};
+    public List<WebElement> getNoOfMonth(){
+        return noOfMonths;
 
     }
+
+//    public void noOfMonths(){
+//        List<WebElement> getNoOfMonth = base.driver.findElements(By.cssSelector("[data-cy=\"calendar-month\"]"));
+//        System.out.println(getNoOfMonth.size());
+//    }
 }
