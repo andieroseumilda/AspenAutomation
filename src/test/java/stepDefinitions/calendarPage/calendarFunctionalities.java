@@ -18,7 +18,7 @@ public class calendarFunctionalities extends baseUtil {
         calendar = new calendarPageLocator(base);
     }
 
-    @When("^i click the stay dates section$")
+    @When("^i click the stay dates box")
     public void iClickTheStayDatesSection() {
         calendar.getStayDatesButton();
     }
@@ -36,5 +36,10 @@ public class calendarFunctionalities extends baseUtil {
         Assert.assertTrue("Please see error message", lowRatesMenu);
 //        Boolean medianRatesMenu = calendar.getMedianRates();
 //        Assert.assertTrue(medianRatesMenu);
+    }
+
+    @When("^i click the holiday$")
+    public void iClickTheHoliday(){
+        calendar.clickButtonHoliday();
     }
 }

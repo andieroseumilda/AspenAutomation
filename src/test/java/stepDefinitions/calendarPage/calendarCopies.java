@@ -118,4 +118,25 @@ public class calendarCopies extends baseUtil {
         int actualNoOfMonths = calendar.getNoOfMonth().size();
         Assert.assertEquals("Please error message below",expectedNoOfMonths,actualNoOfMonths );
     }
+
+    @Then("^i should see the date today and tomorrow are preselected$")
+    public void iShouldSeeTheDateTodayAndTomorrowArePreselected() {
+       //today preselected
+        String actualStartDateModal = calendar.getStartDateSelected();
+        String expectedChecinNumberModal = dateFormat.selectStayDate(0);
+        Assert.assertEquals("Please see the message below", expectedChecinNumberModal, actualStartDateModal);
+        //tomorrow preselected
+        String actualEndDateModal = calendar.getEndDateSelected();
+        String expectedCheckoutNumberModal = dateFormat.selectStayDate(1);
+        Assert.assertEquals("Please see the error message", expectedCheckoutNumberModal, actualEndDateModal);
+    }
+
+    @Then("^i should see the holiday on the selected dates$")
+    public void iShouldSeeTheHolidayOnTheSelectedDates() throws InterruptedException {
+        //is holiday is enabled
+        Boolean holidayIsEnabled = calendar.getHoliday();
+        System.out.println(holidayIsEnabled);
+        Thread.sleep(2000);
+    }
+
 }

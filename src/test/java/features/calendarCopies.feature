@@ -20,10 +20,19 @@ Feature: To get the copies of IBE
     @showRates
     Scenario: I should be able to see the lowest, median and highest rates
       Given i open the IBE page
-      And i click the stay dates section
+      When i click the stay dates box
+      Then i should see the number of months is up to 20
+      And i should see the date today and tomorrow are preselected
+      When i click the holiday
+      Then i should see the holiday on the selected dates
       When i click the show rates
       Then i should see the lowest, median and highest rates
-      And i should see the number of months is up to 20
+
+
+
+      //scenario checkin header label, on the calendar, and see rooms label
+
+      
 
 
 

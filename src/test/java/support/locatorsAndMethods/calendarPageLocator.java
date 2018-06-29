@@ -93,6 +93,18 @@ public class calendarPageLocator extends baseUtil{
     @FindBy(css = "[data-cy=\"calendar-month\"]")
     private List<WebElement> noOfMonths;
 
+    @FindBy(css = ".day--start-date")
+    private WebElement startDateSelected;
+
+    @FindBy(css = ".day--end-date")
+    private WebElement endDateSelected;
+
+    @FindBy(css = "[data-cy=\"holiday-filter\"]")
+    private WebElement btnHoliday;
+
+    @FindBy(css = ".day__label--is-holiday")
+    private WebElement holiday;
+
     //Element Methods
     public String getCalendarHeaderCopy(){
         return wait.until(visibilityOf(calendarHearCopy)).getText();
@@ -134,6 +146,8 @@ public class calendarPageLocator extends baseUtil{
         wait.until(visibilityOf(stayDatesButton)).click();
     }
 
+
+
     // Calendar Modal
     public String getCheckinLabelModal(){
         return wait.until((visibilityOf(checkinLabelModal))).getText();
@@ -173,11 +187,21 @@ public class calendarPageLocator extends baseUtil{
 
     public List<WebElement> getNoOfMonth(){
         return noOfMonths;
-
     }
 
-//    public void noOfMonths(){
-//        List<WebElement> getNoOfMonth = base.driver.findElements(By.cssSelector("[data-cy=\"calendar-month\"]"));
-//        System.out.println(getNoOfMonth.size());
-//    }
+    public String getStartDateSelected(){
+        return wait.until(ExpectedConditions.visibilityOf(startDateSelected)).getText();
+    }
+
+    public String getEndDateSelected(){
+        return wait.until(ExpectedConditions.visibilityOf(endDateSelected)).getText();
+    }
+
+    public void clickButtonHoliday(){
+        wait.until(ExpectedConditions.elementToBeClickable(btnHoliday)).click();
+    }
+
+    public boolean getHoliday(){
+        return wait.until(ExpectedConditions.visibilityOf(holiday)).isEnabled();
+    }
 }
