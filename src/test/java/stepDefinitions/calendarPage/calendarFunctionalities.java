@@ -44,23 +44,31 @@ public class calendarFunctionalities extends baseUtil {
         calendar.clickButtonHoliday();
     }
 
+    @When("^i select stay dates from \"([^\"]*)\" to \"([^\"]*)\"$")
+    public void i_select_stay_dates_from_to(String checkin, String checkout)  {
+        int numberOfDay;
+        if(checkin.equalsIgnoreCase("today")){
+            numberOfDay = 0;
+            datesFormat.selectStayDates(numberOfDay); //click checkin
+        }
+        if (checkout.equalsIgnoreCase("tomorrow")){
+            numberOfDay = 1;
+            datesFormat.selectStayDates(numberOfDay); //click checkout
+        }
+    }
+
     @Then("^all the stay dates are all equal$")
-    public void allTheStayDatesAreAllEqual() throws InterruptedException {
-
-        System.out.println("\n");
-        datesFormat.selectStayDates(2); //click checkin
-        datesFormat.selectStayDates(4); //click checkout
-
+    public void allTheStayDatesAreAllEqual() {
         String checkinMonthNameHeader = calendar.getHeaderCheckinMonthName();
         String checkinNumberHeader = calendar.getHeaderCheckinModal();
         String checkoutMonthNameHeader = calendar.getHeaderCheckoutMonthName();
         String checkoutNumberHeader = calendar.getHeaderCheckoutModal();
 
         //get header month-day
-        System.out.println("Header Label    : " + checkinMonthNameHeader +" " +checkinNumberHeader + " to " + checkoutMonthNameHeader + " " +checkoutNumberHeader);
+        String headerDate = checkinMonthNameHeader +" " +checkinNumberHeader + " to " + checkoutMonthNameHeader + " " +checkoutNumberHeader;
         // get see rooms desc month-day
         String stayDatesOnSeeRoomsButton = calendar.getStayDatesOnSeeRoomButton();
-        System.out.println("See Rooms Description : " + stayDatesOnSeeRoomsButton);
+        Assert.assertEquals("Please see this message: " , headerDate.toLowerCase(),stayDatesOnSeeRoomsButton.toLowerCase());
 
     }
 }

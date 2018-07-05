@@ -30,7 +30,7 @@ public class calendarPageLocator extends baseUtil{
 
     //Element Locations
     @FindBy(css = ".stay-dates-page .stay-dates-page__question")
-    private WebElement calendarHearCopy;
+    private WebElement question_copy_for_stay_dates;
 
     @FindBy(css = ".fixed-top>div>div>.mb-0")
     private WebElement hotelPropertyName;
@@ -117,7 +117,7 @@ public class calendarPageLocator extends baseUtil{
 
     //Element Methods
     public String getCalendarHeaderCopy(){
-        return wait.until(visibilityOf(calendarHearCopy)).getText();
+        return wait.until(visibilityOf(question_copy_for_stay_dates)).getText();
     }
 
     public String getHotelPropertyName(){

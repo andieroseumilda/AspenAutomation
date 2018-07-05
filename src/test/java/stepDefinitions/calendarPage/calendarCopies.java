@@ -20,7 +20,7 @@ public class calendarCopies extends baseUtil {
     private calendarPage calendarController;
 
 
-    // running an instance getting and assigning variable
+    // running an instance to get and assign variable
     public calendarCopies(baseUtil base) {
         this.base = base;
         calendar = new calendarPageLocator(base);
@@ -30,14 +30,14 @@ public class calendarCopies extends baseUtil {
     }
 
     @When("^i open the IBE page$")
-    public void iOpenTheIBEPage() throws InterruptedException {
+    public void iOpenTheIBEPage(){
         // open the IBE page
         base.driver.get("http://aspen.reservations.com/hotel/17371/#/stay-dates");
 //        base.driver.get("http://aspen-reservations.directwithhotels.com/hotel/17371/#/stay-dates");
      }
 
-    @Then("^i should see the header copy \"([^\"]*)\"$")
-    public void iShouldSeeTheHeaderCopy(String headerCopy) {
+    @Then("^i should see the question copy for stay dates \"([^\"]*)\"$")
+    public void iShouldSeeQuestionCopyForStayDates(String headerCopy) {
         String calendarHeaderCopy = calendar.getCalendarHeaderCopy();
         Assert.assertEquals("Please see the message below", headerCopy, calendarHeaderCopy);
     }
@@ -105,7 +105,7 @@ public class calendarCopies extends baseUtil {
     public void iShouldSeeTheDateTodayAndTomorrowOnCalendarModal() {
         //checkin today
         String actualCheckInNumberModal = calendar.getHeaderCheckinModal();
-//        String expectedChecinNumberModal = dateFormat.selectStayDate(0);
+//        String expectedChecinNumberModal = dateFormat.dayFormat(0);
 //        Assert.assertEquals("Please see the message below", expectedChecinNumberModal, actualCheckInNumberModal);
         //checkout tomorrow
         String actualCheckoutNumberModal = calendar.getHeaderCheckoutModal();
