@@ -77,6 +77,15 @@ public class calendarPageLocator extends baseUtil{
     @FindBy(css = ".modal-header [data-cy=\"check-out\"]")
     private WebElement checkoutHeaderModal;
 
+    @FindBy(css = "#calendarModal .dates-holder__checkin  .dates-holder__month")
+    private WebElement checkinMonthHeaderModal;
+
+    @FindBy(css = "#calendarModal .dates-holder__checkout .dates-holder__month")
+    private WebElement checkoutMonthHeaderModal;
+
+    @FindBy(css = ".calendar__btn-rooms .calendar__btn-rooms-desc")
+    private WebElement stayDatesOnSeeRoomsButton;
+
     @FindBy(css = "[data-cy=\"rate-filter\"]")
     private WebElement btnShowRates;
 
@@ -104,6 +113,7 @@ public class calendarPageLocator extends baseUtil{
 
     @FindBy(css = ".day__label--is-holiday")
     private WebElement holiday;
+
 
     //Element Methods
     public String getCalendarHeaderCopy(){
@@ -147,7 +157,6 @@ public class calendarPageLocator extends baseUtil{
     }
 
 
-
     // Calendar Modal
     public String getCheckinLabelModal(){
         return wait.until((visibilityOf(checkinLabelModal))).getText();
@@ -165,7 +174,7 @@ public class calendarPageLocator extends baseUtil{
         return wait.until(visibilityOf(checkinHeaderModal)).getText();
     }
 
-    public String getHEaderCheckoutModal(){
+    public String getHeaderCheckoutModal(){
         return wait.until(visibilityOf(checkoutHeaderModal)).getText();
     }
 
@@ -203,5 +212,17 @@ public class calendarPageLocator extends baseUtil{
 
     public boolean getHoliday(){
         return wait.until(ExpectedConditions.visibilityOf(holiday)).isEnabled();
+    }
+
+    public String getHeaderCheckinMonthName(){
+        return wait.until(ExpectedConditions.visibilityOf(checkinMonthHeaderModal)).getText();
+    }
+
+    public String getHeaderCheckoutMonthName(){
+        return wait.until(ExpectedConditions.visibilityOf(checkoutMonthHeaderModal)).getText();
+    }
+
+    public String getStayDatesOnSeeRoomButton(){
+        return wait.until(ExpectedConditions.visibilityOf(stayDatesOnSeeRoomsButton)).getText();
     }
 }
