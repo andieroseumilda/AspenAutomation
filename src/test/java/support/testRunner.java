@@ -11,7 +11,7 @@ import java.io.File;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"src/test/java/features"},
-//        tags = {"@stayDatesModal"},
+        tags = {"@happyPath"},
         glue = {"stepDefinitions"},
         plugin = { "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"},
         monochrome = true

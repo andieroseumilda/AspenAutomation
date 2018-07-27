@@ -25,7 +25,7 @@ public class stayDatesFormat{
     public stayDatesFormat(baseUtil base) {
 
         this.base = base;
-        this.wait = new WebDriverWait(base.driver, 3000);
+        this.wait = new WebDriverWait(base.driver, 5000);
     }
 
     public String dayFormat(int number_days_from_now){
@@ -45,8 +45,8 @@ public class stayDatesFormat{
         return year_pattern.format(complete_date)+month_pattern.format(complete_date)+day_pattern.format(complete_date);
     }
     public void selectStayDates(int number_days_from_now) {
-        String getCheckDay = dateFormat(number_days_from_now);
-        WebElement checkDay = base.driver.findElement(By.cssSelector("[data-cy=\""+getCheckDay+"\"]"));
+        String getCheckDay = dateFormat(number_days_from_now); //method
+        WebElement checkDay = base.driver.findElement(By.cssSelector("[id=\""+getCheckDay+"\"]"));
         wait.until(ExpectedConditions.visibilityOf(checkDay));
         checkDay.click();
     }

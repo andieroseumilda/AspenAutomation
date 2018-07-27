@@ -222,7 +222,7 @@ public class calendarPageLocator extends baseUtil{
         return wait.until(ExpectedConditions.visibilityOf(checkoutMonthHeaderModal)).getText();
     }
 
-    public String getStayDatesOnSeeRoomButton(){
-        return wait.until(ExpectedConditions.visibilityOf(stayDatesOnSeeRoomsButton)).getText();
+    public WebElement getStayDatesOnSeeRoomButton(){
+        return wait.until(ExpectedConditions.visibilityOf(stayDatesOnSeeRoomsButton));
     }
 }

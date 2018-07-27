@@ -19,6 +19,13 @@ public class calendarFunctionalities extends baseUtil {
         datesFormat = new stayDatesFormat(base);
     }
 
+    @When("^i open the IBE page$")
+    public void  iOpenTheIBEPage(){
+        // open the IBE page
+        base.driver.get("http://aspen.reservations.com/hotel/17371/#/stay-dates");
+//        base.driver.get("http://aspen-reservations.directwithhotels.com/hotel/17371/#/stay-dates");
+    }
+
     @When("^i click the stay dates box")
     public void iClickTheStayDatesSection() {
         calendar.getStayDatesButton();
@@ -67,7 +74,7 @@ public class calendarFunctionalities extends baseUtil {
         //get header month-day
         String headerDate = checkinMonthNameHeader +" " +checkinNumberHeader + " to " + checkoutMonthNameHeader + " " +checkoutNumberHeader;
         // get see rooms desc month-day
-        String stayDatesOnSeeRoomsButton = calendar.getStayDatesOnSeeRoomButton();
+        String stayDatesOnSeeRoomsButton = calendar.getStayDatesOnSeeRoomButton().getText();
         Assert.assertEquals("Please see this message: " , headerDate.toLowerCase(),stayDatesOnSeeRoomsButton.toLowerCase());
 
     }

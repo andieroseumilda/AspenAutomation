@@ -29,13 +29,6 @@ public class calendarCopies extends baseUtil {
 
     }
 
-    @When("^i open the IBE page$")
-    public void iOpenTheIBEPage(){
-        // open the IBE page
-        base.driver.get("http://aspen.reservations.com/hotel/17371/#/stay-dates");
-//        base.driver.get("http://aspen-reservations.directwithhotels.com/hotel/17371/#/stay-dates");
-     }
-
     @Then("^i should see the question copy for stay dates \"([^\"]*)\"$")
     public void iShouldSeeQuestionCopyForStayDates(String headerCopy) {
         String calendarHeaderCopy = calendar.getCalendarHeaderCopy();
